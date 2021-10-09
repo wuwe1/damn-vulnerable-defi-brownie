@@ -1,0 +1,10 @@
+dependencies:
+  - "OpenZeppelin/openzeppelin-contracts@3.0.0"
+compiler:
+  solc:
+    remappings:
+      - "@openzeppelin=OpenZeppelin/openzeppelin-contracts@3.0.0"
+networks:
+  development:
+    cmd_settings:
+      default_balance: 100000
