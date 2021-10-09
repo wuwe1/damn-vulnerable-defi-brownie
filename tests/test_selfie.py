@@ -3,11 +3,8 @@ from brownie import (
     DamnValuableTokenSnapshot,
     SelfiePool,
     SimpleGovernance,
-    AttackSelfiePool,
 )
 from brownie.network.account import Account
-from brownie.network.state import Chain
-from brownie.project import build
 
 
 def test_selfie():
@@ -21,10 +18,6 @@ def test_selfie():
     token.transfer(pool.address, TOKENS_IN_POOL, {"from": deployer})
     assert token.balanceOf(pool.address) == TOKENS_IN_POOL
     # YOUR EXPLOIT GOES HERE
-    asp = AttackSelfiePool.deploy(pool.address, governance.address, {"from": attacker})
-    asp.run(TOKENS_IN_POOL)
-    Chain().sleep(2 * 24 * 60 * 60)
-    governance.executeAction(1, {"from": attacker})
 
     # SUCCESS CONDITIONS
     assert token.balanceOf(attacker.address) == TOKENS_IN_POOL

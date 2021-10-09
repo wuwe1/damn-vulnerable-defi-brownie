@@ -27,7 +27,6 @@ def test_unstoppable():
     receiveContract.executeFlashLoan(10, {"from": someUser})
 
     # YOUR EXPLOIT GOES HERE
-    token.transfer(pool.address, 1, {"from": deployer})
 
     # SUCCESS CONDITION
     with pytest.raises(exceptions.VirtualMachineError):

